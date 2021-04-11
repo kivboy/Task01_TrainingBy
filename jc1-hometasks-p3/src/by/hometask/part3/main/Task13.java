@@ -6,32 +6,41 @@ package by.hometask.part3.main;
  * @author Ilya
  *
  */
+
 public class Task13 {
 
 	public static void main(String[] args) {
-		int[][] mas;
+		int[][] mas;  // ссылка на массив массивов
+		int size = 6; // размер матрицы
+		
+		// создаём матрицу размера 
+		mas = generateMatrix(size);
 
-		mas = generateMatrix(5);
-
+		// выводим результат на экран
 		printMatrix(mas);
 	}
 
+	// генерация требуемой матрицы 
 	public static int[][] generateMatrix(int size) {
 		int[][] resultMatrix = new int[size][size];
 
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j = j + 2) {
-				resultMatrix[j][i] = i + 1; 
+		for (int j = 0; j < size; j++) {
+			
+			// нечётные строки
+			for (int i = 0; i < size; i = i + 2) {
+				resultMatrix[i][j] = j + 1; 
 			}
 			
-			for (int j = 1; j < size; j = j + 2) {
-				resultMatrix[j][i] = size - i; 
+			// чётные строки
+			for (int i = 1; i < size; i = i + 2) {
+				resultMatrix[i][j] = size - j; 
 			}
 		}
 
 		return resultMatrix;
 	}
 
+	// печать матрицы на экран
 	public static void printMatrix(int[][] matrix) {
 
 		for (int i = 0; i < matrix.length; i++) {
